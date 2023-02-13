@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 05:55:08 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/13 22:20:08 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/14 02:36:53 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	const Fixed& getY() const;
 
 	static Fixed getLean(const Point& p1, const Point& p2);
-	static bool getBinDir(const Point& b, const Point& e, const Point& cur);
+	static bool getIsCenter(const Point& b, const Point& e1, const Point& e2, const Point& p);
 	static bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 };
