@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:50 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/13 04:27:58 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/13 16:08:13 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,14 @@ Fixed::Fixed() : val() {
 }
 Fixed::Fixed(const int& val) {
 	std::cout << "Int constructor called\n";
+	this->val = (ABS__(val) << float_bit);
 	if (val < 0) {
-		this->val = (-val << 8);
 		this->val = -(this->val);
-	} else {
-		this->val = (val << 8);
 	}
 }
 Fixed::Fixed(const float& val) {
 	std::cout << "Float constructor called\n";
-	int inte = ABS__(val);
-	float real = ABS__(val) - inte;
-	this->val = (inte << float_bit);
-	for (int i = (1 << (float_bit - 1)); i; i >>= 1) {
-		real *= 2;
-		if (real >= 1) {
-			real -= 1;
-			this->val |= i;
-		}
-	}
+	this->val = ABS__(val) * (1 << float_bit);
 	if (val < 0) {
 		this->val = -(this->val);
 	}
@@ -75,20 +64,14 @@ void Fixed::setRawBits(int const raw) {
 }
 int Fixed::toInt(void) const {
 	if (this->val < 0) {
-		return -(-(this->val) >> 8);
+		return -(-(this->val) >> float_bit);
 	} else {
-		return (this->val >> 8);
+		return (this->val >> float_bit);
 	}
 }
 float Fixed::toFloat(void) const {
-	int tmp = ABS__(this->val);
-	float rtn = (tmp >> 8);
-	float stalk = 0.5f;
-	for (int i = 1 << (float_bit - 1); i; i >>= 1, stalk /= 2) {
-		if (tmp & i) {
-			rtn += stalk;
-		}
-	}
+	float rtn = ABS__(this->val);
+	rtn /= (1 << float_bit);
 	if (this->val < 0) {
 		rtn = -rtn;
 	}
