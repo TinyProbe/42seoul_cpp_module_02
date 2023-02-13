@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:49 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/13 04:27:58 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/14 04:14:44 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 #define ABS__(x) ((x) < 0 ? -(x) : (x))
 

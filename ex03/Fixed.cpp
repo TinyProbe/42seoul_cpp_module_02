@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:50 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/14 02:46:24 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/14 04:16:45 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Fixed::Fixed(const int& val) {
 	this->val = (val << this->float_bit);
 }
 Fixed::Fixed(const float& val) {
-	this->val = val * (1 << this->float_bit);
+	this->val = roundf(val * (1 << this->float_bit));
 }
 Fixed::Fixed(const Fixed& rhs) {
 	*this = rhs;

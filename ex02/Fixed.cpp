@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:50 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/13 19:33:48 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/14 04:15:31 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,11 @@ Fixed::Fixed() : val() {
 }
 Fixed::Fixed(const int& val) {
 	std::cout << "Int constructor called\n";
-	this->val = (ABS__(val) << float_bit);
-	if (val < 0) {
-		this->val = -(this->val);
-	}
+	this->val = (val << this->float_bit);
 }
 Fixed::Fixed(const float& val) {
 	std::cout << "Float constructor called\n";
-	this->val = ABS__(val) * (1 << float_bit);
-	if (val < 0) {
-		this->val = -(this->val);
-	}
+	this->val = roundf(val * (1 << this->float_bit));
 }
 Fixed::Fixed(const Fixed& rhs) {
 	std::cout << "Copy constructor called\n";
@@ -81,7 +75,7 @@ Fixed Fixed::operator/(const Fixed& rhs) const {
 	return Fixed(this->toFloat() / rhs.toFloat());
 }
 Fixed& Fixed::operator++() {
-	this->setRawBits(this->getRawBits() + 1);
+	this->val++;
 	return *this;
 }
 Fixed Fixed::operator++(int) {
@@ -90,7 +84,7 @@ Fixed Fixed::operator++(int) {
 	return tmp;
 }
 Fixed& Fixed::operator--() {
-	this->setRawBits(this->getRawBits() - 1);
+	this->val--;
 	return *this;
 }
 Fixed Fixed::operator--(int) {
@@ -104,26 +98,17 @@ Fixed::operator float() const {
 
 int Fixed::getRawBits(void) const {
 	std::cout << "getRawBits member function called\n";
-	return val;
+	return this->val;
 }
 void Fixed::setRawBits(int const raw) {
 	std::cout << "setRawBits member function called\n";
-	val = raw;
+	this->val = raw;
 }
 int Fixed::toInt(void) const {
-	if (this->val < 0) {
-		return -(-(this->val) >> float_bit);
-	} else {
-		return (this->val >> float_bit);
-	}
+	return (this->val >> this->float_bit);
 }
 float Fixed::toFloat(void) const {
-	float rtn = ABS__(this->val);
-	rtn /= (1 << float_bit);
-	if (this->val < 0) {
-		rtn = -rtn;
-	}
-	return rtn;
+	return (float) this->val / (1 << this->float_bit);
 }
 
 const Fixed& Fixed::min(const Fixed& lhs, const Fixed& rhs) {
