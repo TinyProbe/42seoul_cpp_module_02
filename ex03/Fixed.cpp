@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:50 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/13 16:11:32 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/13 19:33:33 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,22 @@ std::ostream& Fixed::operator<<(std::ostream& os) const {
 	return os;
 }
 bool Fixed::operator>(const Fixed& rhs) const {
-	return this->toFloat() > rhs.toFloat();
+	return this->getRawBits() > rhs.getRawBits();
 }
 bool Fixed::operator<(const Fixed& rhs) const {
-	return this->toFloat() < rhs.toFloat();
+	return this->getRawBits() < rhs.getRawBits();
 }
 bool Fixed::operator>=(const Fixed& rhs) const {
-	return this->toFloat() >= rhs.toFloat();
+	return this->getRawBits() >= rhs.getRawBits();
 }
 bool Fixed::operator<=(const Fixed& rhs) const {
-	return this->toFloat() <= rhs.toFloat();
+	return this->getRawBits() <= rhs.getRawBits();
 }
 bool Fixed::operator==(const Fixed& rhs) const {
-	return this->toFloat() == rhs.toFloat();
+	return this->getRawBits() == rhs.getRawBits();
 }
 bool Fixed::operator!=(const Fixed& rhs) const {
-	return this->toFloat() != rhs.toFloat();
+	return this->getRawBits() != rhs.getRawBits();
 }
 Fixed Fixed::operator+(const Fixed& rhs) const {
 	return Fixed(this->toFloat() + rhs.toFloat());
