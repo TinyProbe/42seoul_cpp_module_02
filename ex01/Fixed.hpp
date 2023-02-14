@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:49 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/14 04:14:44 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/14 18:13:53 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 #include <iostream>
 #include <cmath>
-
-#define ABS__(x) ((x) < 0 ? -(x) : (x))
 
 class Fixed {
 	static const int float_bit = 8;

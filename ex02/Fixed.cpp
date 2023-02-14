@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:50 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/14 04:15:31 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/14 18:24:41 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Fixed& Fixed::operator=(const Fixed& rhs) {
 	if (this == &rhs) {
 		return *this;
 	}
-	val = rhs.val;
+	this->val = rhs.val;
 	return *this;
 }
 std::ostream& Fixed::operator<<(std::ostream& os) const {

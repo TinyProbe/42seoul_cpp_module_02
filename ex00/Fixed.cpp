@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:50 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/14 04:13:24 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/14 18:25:19 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Fixed& Fixed::operator=(const Fixed& rhs) {
 	if (this == &rhs) {
 		return *this;
 	}
-	val = rhs.val;
+	this->val = rhs.val;
 	return *this;
 }
 

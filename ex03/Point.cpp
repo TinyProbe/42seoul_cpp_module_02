@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 05:55:09 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/14 04:03:00 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/14 18:19:24 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,17 @@ Fixed Point::getLean(const Point& p1, const Point& p2) {
 	return dif_y / dif_x;
 }
 bool Point::getIsCenter(const Point& b, const Point& e1, const Point& e2, const Point& p) {
-	Fixed l(getLean(b, e1));
-	Fixed c(getLean(b, p));
-	Fixed r(getLean(b, e2));
+	Fixed l(Point::getLean(b, e1));
+	Fixed c(Point::getLean(b, p));
+	Fixed r(Point::getLean(b, e2));
+	bool reverse = false;
 	if ((e1.getX() < b.getX() && b.getX() < e2.getX())
 		|| (e1.getX() > b.getX() && b.getX() > e2.getX())) {
-		if (l < r) {
-			return !(l < c && c < r);
-		} else {
-			return !(l > c && c > r);
-		}
+		reverse = true;
 	}
 	if (l < r) {
-		return (l < c && c < r);
+		return (reverse ? !(l < c && c < r) : (l < c && c < r));
 	} else {
-		return (l > c && c > r);
+		return (reverse ? !(l > c && c > r) : (l > c && c > r));
 	}
 }
