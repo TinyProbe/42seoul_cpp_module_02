@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:50 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/14 18:24:41 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/16 18:24:26 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ Fixed& Fixed::operator=(const Fixed& rhs) {
 	}
 	this->val = rhs.val;
 	return *this;
-}
-std::ostream& Fixed::operator<<(std::ostream& os) const {
-	std::cout << "Left shift operator called\n";
-	os << this->toFloat();
-	return os;
 }
 bool Fixed::operator>(const Fixed& rhs) const {
 	return this->getRawBits() > rhs.getRawBits();
@@ -92,9 +87,6 @@ Fixed Fixed::operator--(int) {
 	--*this;
 	return tmp;
 }
-Fixed::operator float() const {
-	return this->toFloat();
-}
 
 int Fixed::getRawBits(void) const {
 	std::cout << "getRawBits member function called\n";
@@ -122,4 +114,8 @@ const Fixed& Fixed::max(const Fixed& lhs, const Fixed& rhs) {
 		return lhs;
 	}
 	return rhs;
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& rhs) {
+	return os << rhs.toFloat();
 }

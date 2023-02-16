@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:49 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/14 18:13:53 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/16 18:23:07 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ public:
 	Fixed(const Fixed& rhs);
 	~Fixed();
 	Fixed& operator=(const Fixed& rhs);
-	std::ostream& operator<<(std::ostream& os) const;
-	operator float() const;
 
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
@@ -37,5 +35,7 @@ public:
 	float toFloat(void) const;
 
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& rhs);
 
 #endif
