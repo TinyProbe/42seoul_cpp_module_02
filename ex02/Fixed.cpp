@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:50 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/16 18:24:26 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/21 15:06:35 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,18 @@ float Fixed::toFloat(void) const {
 	return (float) this->val / (1 << this->float_bit);
 }
 
+Fixed& Fixed::min(Fixed& lhs, Fixed& rhs) {
+	if (lhs < rhs) {
+		return lhs;
+	}
+	return rhs;
+}
+Fixed& Fixed::max(Fixed& lhs, Fixed& rhs) {
+	if (lhs > rhs) {
+		return lhs;
+	}
+	return rhs;
+}
 const Fixed& Fixed::min(const Fixed& lhs, const Fixed& rhs) {
 	if (lhs < rhs) {
 		return lhs;

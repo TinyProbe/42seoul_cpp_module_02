@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 20:14:49 by tkong             #+#    #+#             */
-/*   Updated: 2023/02/16 18:24:26 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/21 15:04:46 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ public:
 	int toInt(void) const;
 	float toFloat(void) const;
 
+	static Fixed& min(Fixed& lhs, Fixed& rhs);
+	static Fixed& max(Fixed& lhs, Fixed& rhs);
 	static const Fixed& min(const Fixed& lhs, const Fixed& rhs);
 	static const Fixed& max(const Fixed& lhs, const Fixed& rhs);
 
